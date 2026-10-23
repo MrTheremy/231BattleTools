@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/agent/KingshotTools.Agent.Upload/KingshotTools.Agent.Upload.csproj" />
+  </ItemGroup>
+
+</Project>

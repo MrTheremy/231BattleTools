@@ -1,0 +1,62 @@
+<Window x:Class="KingshotTools.Agent.DevConsole.DevConsoleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KingshotTools.Agent.DevConsole"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:DevConsoleViewModel}"
+        Title="Kingshot Tools - Dev Console" Height="720" Width="1200">
+  <DockPanel>
+    <ToolBar DockPanel.Dock="Top">
+      <Button Content="Record .pcapng" Command="{Binding Recording.ToggleRecordingCommand}" />
+      <Button Content="Load .pcapng" Command="{Binding Recording.LoadCaptureCommand}" />
+      <Separator />
+      <TextBlock Text="Upload target:" VerticalAlignment="Center" Margin="4,0" />
+      <ComboBox Width="90"
+                ItemsSource="{Binding UploadTarget.Targets}"
+                SelectedItem="{Binding UploadTarget.SelectedTarget}" />
+    </ToolBar>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*" />
+        <ColumnDefinition Width="5" />
+        <ColumnDefinition Width="3*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="5" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <GroupBox Header="Packets" Grid.Column="0" Grid.RowSpan="3">
+        <ListView ItemsSource="{Binding Packets.Packets}" SelectedItem="{Binding Packets.SelectedPacket}">
+          <ListView.View>
+            <GridView>
+              <GridViewColumn Header="Time" DisplayMemberBinding="{Binding Timestamp, StringFormat=HH:mm:ss.fff}" />
+              <GridViewColumn Header="Dir" DisplayMemberBinding="{Binding Direction}" />
+              <GridViewColumn Header="Port" DisplayMemberBinding="{Binding Port}" />
+              <GridViewColumn Header="Conn" DisplayMemberBinding="{Binding ConnectionId}" />
+              <GridViewColumn Header="Len" DisplayMemberBinding="{Binding Length}" />
+            </GridView>
+          </ListView.View>
+        </ListView>
+      </GroupBox>
+
+      <GridSplitter Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" />
+
+      <GroupBox Header="Frame (hex)" Grid.Column="2" Grid.Row="0">
+        <TextBox Text="{Binding FrameHex.HexText, Mode=OneWay}" IsReadOnly="True"
+                 FontFamily="Consolas" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+      </GroupBox>
+
+      <GridSplitter Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" />
+
+      <GroupBox Header="Decode preview" Grid.Column="2" Grid.Row="2">
+        <TextBox Text="{Binding DecodePreview.PreviewText, Mode=OneWay}" IsReadOnly="True"
+                 FontFamily="Consolas" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+      </GroupBox>
+    </Grid>
+  </DockPanel>
+</Window>

@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/backend/KingshotTools.Data/KingshotTools.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Cosmos change feed processor that pushes world-state changes to SignalR kingdom groups. -->
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KingshotTools.Data\KingshotTools.Data.csproj" />
+  </ItemGroup>
+
+</Project>

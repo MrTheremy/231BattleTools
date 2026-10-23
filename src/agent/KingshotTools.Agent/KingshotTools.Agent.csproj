@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- Only for System.Windows.Forms.NotifyIcon (tray icon); keep WinForms types out of the global usings. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>KingshotTools.Agent</AssemblyName>
+    <RootNamespace>KingshotTools.Agent</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <!--
+    Decoder gating (docs/adr/0003): only non-Release builds reference KingshotTools.Decoder.
+    Release agents just upload frames. Code that needs the decoder goes behind #if DEV_DECODER.
+  -->
+  <PropertyGroup>
+    <IncludeDevDecoder>false</IncludeDevDecoder>
+    <IncludeDevDecoder Condition="'$(Configuration)' != 'Release'">true</IncludeDevDecoder>
+    <DefineConstants Condition="'$(IncludeDevDecoder)' == 'true'">$(DefineConstants);DEV_DECODER</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IncludeDevDecoder)' == 'true'">
+    <ProjectReference Include="..\..\shared\KingshotTools.Decoder\KingshotTools.Decoder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\KingshotTools.Contracts\KingshotTools.Contracts.csproj" />
+    <ProjectReference Include="..\KingshotTools.Agent.Capture\KingshotTools.Agent.Capture.csproj" />
+    <ProjectReference Include="..\KingshotTools.Agent.Upload\KingshotTools.Agent.Upload.csproj" />
+  </ItemGroup>
+
+  <!-- Build-time guard: a Release build fails if the decoder assembly is resolved by any route (direct or transitive). -->
+  <Target Name="AssertReleaseExcludesDecoder" AfterTargets="ResolveAssemblyReferences" Condition="'$(Configuration)' == 'Release'">
+    <Error
+      Condition="'@(ReferencePath->AnyHaveMetadataValue(`Filename`, `KingshotTools.Decoder`))' == 'True'"
+      Text="Release builds of KingshotTools.Agent must not reference KingshotTools.Decoder (docs/adr/0003)." />
+  </Target>
+
+</Project>

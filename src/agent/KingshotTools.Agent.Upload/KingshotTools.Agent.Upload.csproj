@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Local frame spool and the batched WebSocket/TLS uploader. Interfaces and stubs only for now. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\KingshotTools.Contracts\KingshotTools.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

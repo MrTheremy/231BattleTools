@@ -1,0 +1,18 @@
+{
+  "solution": {
+    "path": "KingshotTools.sln",
+    "projects": [
+      "src\\shared\\KingshotTools.Contracts\\KingshotTools.Contracts.csproj",
+      "src\\shared\\KingshotTools.Decoder\\KingshotTools.Decoder.csproj",
+      "src\\backend\\KingshotTools.Api\\KingshotTools.Api.csproj",
+      "src\\backend\\KingshotTools.Data\\KingshotTools.Data.csproj",
+      "src\\backend\\KingshotTools.Ingest\\KingshotTools.Ingest.csproj",
+      "src\\backend\\KingshotTools.Live\\KingshotTools.Live.csproj",
+      "tests\\KingshotTools.Contracts.Tests\\KingshotTools.Contracts.Tests.csproj",
+      "tests\\KingshotTools.Decoder.Tests\\KingshotTools.Decoder.Tests.csproj",
+      "tests\\KingshotTools.Data.Tests\\KingshotTools.Data.Tests.csproj",
+      "tests\\KingshotTools.Ingest.Tests\\KingshotTools.Ingest.Tests.csproj",
+      "tests\\KingshotTools.Live.Tests\\KingshotTools.Live.Tests.csproj"
+    ]
+  }
+}

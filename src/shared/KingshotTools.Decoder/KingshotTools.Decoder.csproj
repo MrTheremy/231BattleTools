@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Shared by the backend and the agent's dev console (Debug builds only).
+    Release builds of the agent must never reference this project; see docs/adr/0003.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\KingshotTools.Contracts\KingshotTools.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

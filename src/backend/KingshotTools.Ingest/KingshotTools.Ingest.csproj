@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Decoder worker: drains uploaded frame batches, archives them, decodes them and writes documents to Cosmos. -->
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\KingshotTools.Contracts\KingshotTools.Contracts.csproj" />
+    <ProjectReference Include="..\..\shared\KingshotTools.Decoder\KingshotTools.Decoder.csproj" />
+    <ProjectReference Include="..\KingshotTools.Data\KingshotTools.Data.csproj" />
+  </ItemGroup>
+
+</Project>

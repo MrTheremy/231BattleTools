@@ -1,0 +1,33 @@
+# Local emulators for the backend. Start with: docker compose up -d
+# Connection strings live in src/backend/KingshotTools.Api/appsettings.Development.json.
+name: kingshot-tools
+
+services:
+  cosmos:
+    # Cosmos DB Linux emulator (vNext). Gateway on :8081 over HTTP, Data Explorer on http://localhost:1234
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+    command: ["--protocol", "http"]
+    ports:
+      - "8081:8081"
+      - "1234:1234"
+    environment:
+      ENABLE_EXPLORER: "true"
+    volumes:
+      - cosmos-data:/data
+    restart: unless-stopped
+
+  azurite:
+    # Blob/Queue/Table emulator. Blob endpoint: http://127.0.0.1:10000/devstoreaccount1
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    command: ["azurite", "--blobHost", "0.0.0.0", "--queueHost", "0.0.0.0", "--tableHost", "0.0.0.0", "--location", "/data", "--skipApiVersionCheck", "--loose"]
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite-data:/data
+    restart: unless-stopped
+
+volumes:
+  cosmos-data:
+  azurite-data:

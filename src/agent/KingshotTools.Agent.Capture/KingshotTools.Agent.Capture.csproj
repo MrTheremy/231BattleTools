@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Packet capture (SharpPcap over Npcap) and TCP reassembly into frames. Interfaces and stubs only for now. -->
+
+  <ItemGroup>
+    <PackageReference Include="SharpPcap" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\KingshotTools.Contracts\KingshotTools.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

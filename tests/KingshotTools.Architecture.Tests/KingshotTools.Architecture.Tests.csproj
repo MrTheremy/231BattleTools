@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Structural rules checked by evaluating the real project files with MSBuild
+    (no project references on purpose: the tests must see what each configuration would build).
+  -->
+
+</Project>

@@ -1,0 +1,44 @@
+# ---- Captures: NEVER commit. They can contain account tokens and private chat. ----
+*.pcap
+*.pcapng
+*.pcapng.gz
+samples/**
+!samples/README.md
+
+# ---- .NET ----
+bin/
+obj/
+artifacts/
+TestResults/
+*.user
+*.suo
+*.rsuser
+.vs/
+*.binlog
+
+# ---- Node / web ----
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.eslintcache
+src/web/.env.local
+src/web/.env.*.local
+
+# ---- Local agent data (spool, logs) ----
+.spool/
+logs/
+
+# ---- Editors / OS ----
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- Secrets ----
+*.pfx
+*.pem
+secrets.json
+appsettings.*.local.json

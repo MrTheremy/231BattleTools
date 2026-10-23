@@ -1,0 +1,17 @@
+<Project>
+  <!-- Shared settings for every .NET project in the repo. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <!-- Lets the WPF agent (net10.0-windows) build on Linux/macOS; it can only run on Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <IsPackable>false</IsPackable>
+    <Company>KingshotTools</Company>
+    <Product>Kingshot Battle Tools</Product>
+  </PropertyGroup>
+</Project>

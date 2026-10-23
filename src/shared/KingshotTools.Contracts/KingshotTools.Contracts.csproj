@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Wire DTOs shared by the agent and the backend. Must stay free of decoding logic and of heavy dependencies. -->
+
+</Project>

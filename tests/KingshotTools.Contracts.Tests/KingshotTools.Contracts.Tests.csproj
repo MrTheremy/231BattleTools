@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/shared/KingshotTools.Contracts/KingshotTools.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

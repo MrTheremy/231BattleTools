@@ -1,0 +1,9 @@
+@api = http://localhost:5080
+
+GET {{api}}/health
+
+###
+GET {{api}}/openapi/v1.json
+
+###
+GET {{api}}/api/admin/protocol-lab/unknown-messages
